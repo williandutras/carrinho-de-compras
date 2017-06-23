@@ -12,14 +12,30 @@ function getTotal(list){
 	return total;
 }
 
+//criando a tabela
 function setList(list){
 	var table = '<thead><tr><td>Description</td><td>Amount</td><td>Value</td><td>Action</td></tr></thead><tbody>';
 	for(var key in list){
-		table += '<tr><td>'+ list[key].desc +'</td><td>'+ list[key].amount +'</td><td>'+ list[key].value +'</td><td>Edit | Delete</td></tr>';
+		table += '<tr><td>'+ formatDesc(list[key].desc) +'</td><td>'+ list[key].amount +'</td><td>'+ formatValue(list[key].value) +'</td><td>Edit | Delete</td></tr>';
 	}
 	table += '</tbody>';
 
 	document.getElementById('listTable').innerHTML = table;
+}
+
+//formatando o nome do produto
+function formatDesc(desc){
+	var str = desc.toLowerCase();
+	str = str.charAt(0).toUpperCase() + str.slice(1);
+	return str;
+}
+
+//formatando o preço
+function formatValue(value){
+	var str = parseFloat(value).toFixed(2) + "";
+	str = str.replace(".",",");
+	str = "$ " + str;
+	return str;
 }
 
 setList(list);
