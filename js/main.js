@@ -117,6 +117,7 @@ function validation(){
 	var amount = document.getElementById("amount").value;
 	var value = document.getElementById("value").value;
 	var errors = "";
+	document.getElementById("errors").style.display = "none";
 
 	if(desc === ""){
 		errors += '<p>Fill out description</p>';
