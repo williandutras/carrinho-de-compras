@@ -4,12 +4,14 @@ var list = [
 	{"desc":"meat", "amount":"1", "value":"15.00"}
 ];
 
+
+//somando total
 function getTotal(list){
 	var total = 0;
 	for(var key in list){
 		total += list[key].value * list[key].amount;
 	}
-	return total;
+	document.getElementById("totalValue").innerHTML = formatValue(total);
 }
 
 //criando a tabela
@@ -21,6 +23,7 @@ function setList(list){
 	table += '</tbody>';
 
 	document.getElementById('listTable').innerHTML = table;
+	getTotal(list);
 }
 
 //formatando o nome do produto
@@ -143,5 +146,3 @@ function validation(){
 }
 
 setList(list);
-
-console.log(getTotal(list));
