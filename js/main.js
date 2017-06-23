@@ -24,6 +24,7 @@ function setList(list){
 
 	document.getElementById('listTable').innerHTML = table;
 	getTotal(list);
+	saveListStorage(list);
 }
 
 //formatando o nome do produto
@@ -145,6 +146,7 @@ function validation(){
 	}
 }
 
+//deletando lista
 function deleteList(){
 	if (confirm("Delete this list?")){
 		list = [];
@@ -152,4 +154,19 @@ function deleteList(){
 	}
 }
 
-setList(list);
+//salvando em storage
+function saveListStorage(list){
+	var jsonStr = JSON.stringify(list);
+	localStorage.setItem("list",jsonStr);
+}
+
+//verifica se já tem algo salvo
+function initListStorage(){
+	var testList = localStorage.getItem("list");
+	if(testList){
+		list = JSON.parse(testList);
+	}
+	setList(list);
+}
+
+initListStorage();
